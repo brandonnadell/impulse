@@ -8,16 +8,19 @@
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0",
     "@testing-library/user-event": "^7.2.1",
+    "jss": "^10.3.0",
     "material-ui-search-bar": "^1.0.0-beta.14",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+    "react-jss": "^10.3.0",
     "react-scripts": "3.4.1",
     "styled-components": "^5.1.1",
-    "validator": "^13.1.1"
+    "validator": "^13.1.1",
+    "source-map-loader": "^1.0.0"
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "./scripts/build.sh",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
