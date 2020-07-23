@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { TextField } from '@material-ui/core';
-/*global chrome*/
-
 
 /*
 Notes to brandon:
@@ -23,48 +21,53 @@ More functionality:
 - make it like Momentum, where you can go back and change name
 */
 const Greeting = (props) => {
-    console.log("Greeting rendering?");
     const [displayName, setDisplayName] = useState(null);
+
     useEffect(() => {
         console.log("remounting");
-        chrome.storage.local.get({'Personalization': null}, (data) => {
-            console.log(data);
-            if (data.Personalization !== null) {
-                let info = data.json();
-                setDisplayName(info["displayName"]);
-            } 
-        });
+        // chrome.storage.local.get({'Personalization': null}, (data) => {
+        //     console.log(data);
+        //     if (data.Personalization !== null) {
+        //         let info = data.json();
+        //         setDisplayName(info["displayName"]);
+        //     } 
+        // });
+        if (localStorage.getItem("displayName"))
+            setDisplayName(localStorage.displayName)
 
     }, []);
-
 
     const handleKeyDown = (e) => {
         console.log("keypress");
         // code 13 is <enter>
         if (e.keyCode === 13) {
-
             console.log("enter pressed");
-            let data = {"displayName": displayName};
-            chrome.storage.local.set({"Personalization": data}, function() {
-                console.log('Value is set to ' + data);
-              });
+            // let data = {"displayName": displayName};
+            // chrome.storage.local.set({"Personalization": data}, function() {
+            //     console.log('Value is set to ' + data);
+            //   });
+            localStorage.setItem("displayName", displayName)
+            console.log('Value is set to ' + displayName);
         }
     }
-    if(displayName) {
-        console.log("display name" + displayName);
-        return (
-            <h1>Hello {displayName}</h1>
-        );
+
+    const handleChange = (e) => {
+        setDisplayName(e.target.value)
+        localStorage.displayName = e.target.value;
     }
-    else{
-        return (
+
+    return (
+        <div>
+            <span>Hello, </span>
             <TextField 
-                hintText="Name"
+                // label="Name"
+                defaultValue="friend"
                 value={displayName}
-                onKeyDown={(e) => handleKeyDown(e)}
+                onChange={handleChange}
+                // onKeyDown={(e) => handleKeyDown(e)}
             />
-        );
-    }
+        </div>
+    );
 
 }
 
