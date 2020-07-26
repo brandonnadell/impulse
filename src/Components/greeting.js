@@ -1,5 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useLayoutEffect } from 'react';
 import { TextField } from '@material-ui/core';
+import '../App.css';
+import * as storageHandler from '../storageHandler';
 
 /*
 Notes to brandon:
@@ -20,51 +22,35 @@ Fixes are:
 More functionality:
 - make it like Momentum, where you can go back and change name
 */
+
 const Greeting = (props) => {
     const [displayName, setDisplayName] = useState(null);
-
-    useEffect(() => {
+    
+    useLayoutEffect(() => {
         console.log("remounting");
-        // chrome.storage.local.get({'Personalization': null}, (data) => {
-        //     console.log(data);
-        //     if (data.Personalization !== null) {
-        //         let info = data.json();
-        //         setDisplayName(info["displayName"]);
-        //     } 
-        // });
-        if (localStorage.getItem("displayName"))
-            setDisplayName(localStorage.displayName)
-
+        setDisplayName(storageHandler.get("impulseDisplayName"))
     }, []);
-
-    const handleKeyDown = (e) => {
-        console.log("keypress");
-        // code 13 is <enter>
-        if (e.keyCode === 13) {
-            console.log("enter pressed");
-            // let data = {"displayName": displayName};
-            // chrome.storage.local.set({"Personalization": data}, function() {
-            //     console.log('Value is set to ' + data);
-            //   });
-            localStorage.setItem("displayName", displayName)
-            console.log('Value is set to ' + displayName);
-        }
-    }
 
     const handleChange = (e) => {
         setDisplayName(e.target.value)
-        localStorage.displayName = e.target.value;
+        storageHandler.set("impulseDisplayName", e.target.value);
     }
 
     return (
-        <div>
-            <span>Hello, </span>
+        <div class="container">
+            <div className="greeting"> Hello, </div>
             <TextField 
-                // label="Name"
+                InputProps={{ disableUnderline: displayName !== "", 
+                    style: {
+                        fontSize: '4em',
+                        height: '75px', // Ideally there's an automatic way to align this
+                        color: 'black',
+                    }
+                }}
                 defaultValue="friend"
+                placeholder="friend"
                 value={displayName}
                 onChange={handleChange}
-                // onKeyDown={(e) => handleKeyDown(e)}
             />
         </div>
     );

@@ -6,7 +6,6 @@ import './App.css';
 import JssProvider from 'react-jss';
 
 
-/*global chrome*/
 function App() {
   return (
       <div>
