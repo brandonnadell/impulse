@@ -36,22 +36,3 @@
     transform: rotate(360deg);
   }
 }
-
-.greeting {
-  color: #000;
-  font-size: 4em;
-  margin: 0px;
-  /* text-shadow: 0 0 15px rgba(0,0,0,1); NOTE: I cannot figure out to add shadows to a TextField */ 
-  display: inline;
-}
-
-.container {
-  height: 200px;
-  position: relative;
-  margin: 0;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  -ms-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
-}

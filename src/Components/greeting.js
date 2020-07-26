@@ -1,58 +1,76 @@
 import React, { useState, useLayoutEffect } from 'react';
-import { TextField } from '@material-ui/core';
+import { TextField, Typography, Box } from '@material-ui/core';
 import '../App.css';
-import * as storageHandler from '../storageHandler';
+import { getStorage, setStorage}  from '../storageHandler';
+import styled from 'styled-components';
 
-/*
-Notes to brandon:
 
-Current issues are that the greeting crashes.
+const DISPLAY_NAME = "impulseDisplayName";
+const DEFAULT_PLACEHOLDER = "friend";
 
-Note the usage of chrome.storage.local . This is chrome extension storage, and is very hard to use because theres no way to check it or play around with it. 
-I reccomend switching over to html localstorage (https://www.w3schools.com/html/html5_webstorage.asp). This will allow us to run everything as a website with no dependence on chrome extension stuff.
-The other issue is managing state and state update from the input. Currently, need to be able to pull out input without triggering a state update every time, as a state update causes the useEffect section to be run. 
+const GreetingContainer = styled.div`
+    text-align: center;
+    margin: auto;
+`;
 
-We need to use the useEffect to check for information on initial load. 
-
-Fixes are:
-- change storage
-- better handle state and lifecycle
-- properly load from loaclstorage on initial, and update local storage on input
-
-More functionality:
-- make it like Momentum, where you can go back and change name
-*/
+const TextWrapper = styled.div`
+    margin: 6px 0 7px;
+    display: inline-block;
+`;
 
 const Greeting = (props) => {
     const [displayName, setDisplayName] = useState(null);
+    // const [width, setWidth] = useState(DEFAULT_PLACEHOLDER.length + "ch")
     
     useLayoutEffect(() => {
-        console.log("remounting");
-        setDisplayName(storageHandler.get("impulseDisplayName"))
+        const name = getStorage(DISPLAY_NAME);
+        setDisplayName(name);
+        // if (!name) {
+        //     setWidth(DEFAULT_PLACEHOLDER.length + "ch");
+        // }
+        // else {
+        //     setWidth((name.length + 2) + "ch");
+        // }
     }, []);
 
     const handleChange = (e) => {
-        setDisplayName(e.target.value)
-        storageHandler.set("impulseDisplayName", e.target.value);
+        const name = e.target.value;
+        setDisplayName(name);
+        // if (!name) {
+        //     setWidth(DEFAULT_PLACEHOLDER.length + "ch");
+        // }
+        // else {
+        //     setWidth((name.length + 2)+ "ch");
+        // }
+        setStorage(DISPLAY_NAME, name);
+
     }
 
+
     return (
-        <div class="container">
-            <div className="greeting"> Hello, </div>
+        <GreetingContainer>
+            <TextWrapper>
+                <Typography variant="h2">
+                    <Box fontWeight='fontWeightMedium'>
+                        Hello,&nbsp;
+                    </Box> 
+                </Typography>
+            </TextWrapper>
             <TextField 
                 InputProps={{ disableUnderline: displayName !== "", 
-                    style: {
-                        fontSize: '4em',
-                        height: '75px', // Ideally there's an automatic way to align this
-                        color: 'black',
+                style: {
+                        fontSize: '3.75em',
+                        fontWeight: 500,
+                        // width: width,
                     }
                 }}
-                defaultValue="friend"
-                placeholder="friend"
+                input
+                defaultValue={DEFAULT_PLACEHOLDER}
+                placeholder={DEFAULT_PLACEHOLDER}
                 value={displayName}
                 onChange={handleChange}
             />
-        </div>
+        </GreetingContainer>
     );
 
 }

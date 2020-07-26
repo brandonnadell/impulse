@@ -1,7 +1,7 @@
-export function set(key, value) {
+export function setStorage(key, value) {
     localStorage[key] = value;
 };
 
-export function get(key, value) {
+export function getStorage(key, value) {
     return localStorage[key];
 };

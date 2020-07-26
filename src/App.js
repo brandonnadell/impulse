@@ -9,8 +9,8 @@ import JssProvider from 'react-jss';
 function App() {
   return (
       <div>
-        <Search></Search>
         <Greeting></Greeting>
+        <Search></Search>
       </div>
   );
 }
