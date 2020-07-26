@@ -11,7 +11,11 @@ const TIME_OPTIONS = {'hour12':true,'hour':'2-digit','minute':'2-digit'};
 const Time =()=>{
 
     const getCurrentTime = () => {
-        return  new Date().toLocaleTimeString([], TIME_OPTIONS);
+        let tempTime =  new Date().toLocaleTimeString([], TIME_OPTIONS);
+        if(tempTime[0] == "0"){
+            tempTime = tempTime.substr(1)
+        }
+        return tempTime
     }
     const [time, setTime] = useState(getCurrentTime());
 
