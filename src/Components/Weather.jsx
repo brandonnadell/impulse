@@ -12,7 +12,6 @@ const WeatherWrapper = styled.div`
     text-align: right;
 `;
 
-const DEGREE_SYMBOL = "&#176;"
 
 const Weather = (props) =>{
     const [position, setPosition] = useState(null)
@@ -30,7 +29,7 @@ const Weather = (props) =>{
     if(weather) {
         const city = weather.name;
         const skyCover = weather.weather[0].main;
-        const temp = weather.temp;
+        const temp = weather.main.temp;
         return (  
             <WeatherWrapper display='inline'>
                 <Typography variant='subtitle1'>
@@ -41,20 +40,14 @@ const Weather = (props) =>{
                         {skyCover}
                     </Box>
                     <Box fontWeight='fontWeightLight'>
-                        {temp}{DEGREE_SYMBOL}
+                        {temp}&#176;
                     </Box>
                 </Typography>
             </WeatherWrapper>
         );
     }
     return (
-        <WeatherWrapper>
-            <Typography variant='h6'>
-                <Box fontWeight='fontWeightMedium'>
-                    Loading Weather
-                </Box>
-            </Typography>
-        </WeatherWrapper>
+        <React.Fragment></React.Fragment>
     );
     // return (
     // <Card>
