@@ -29,7 +29,7 @@ const Weather = (props) =>{
     if(weather) {
         const city = weather.name;
         const skyCover = weather.weather[0].main;
-        const temp = weather.main.temp;
+        const temp = Math.round(weather.main.temp);
         return (  
             <WeatherWrapper display='inline'>
                 <Typography variant='subtitle1'>
