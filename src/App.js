@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { Search } from './Components/searchBar';
 import './App.css';
+console.log(process.env.REACT_APP_NOT_SECRET_CODE)
 
 
 
