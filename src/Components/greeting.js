@@ -15,7 +15,6 @@ const GreetingContainer = styled.div`
 
 const TextWrapper = styled.div`
     margin: 6px 0 7px;
-    display: inline-block;
 `;
 
 const Greeting = (props) => {
@@ -52,7 +51,7 @@ const Greeting = (props) => {
             <TextWrapper>
                 <Typography variant="h2">
                     <Box fontWeight='fontWeightMedium'>
-                        Hello,&nbsp;
+                        Hello,
                     </Box> 
                 </Typography>
             </TextWrapper>
@@ -61,7 +60,13 @@ const Greeting = (props) => {
                 style: {
                         fontSize: '3.75em',
                         fontWeight: 500,
+                        textAlign: 'center'
                         // width: width,
+                    }
+                }}
+                inputProps={{
+                    style:{
+                        textAlign: 'center'
                     }
                 }}
                 input
