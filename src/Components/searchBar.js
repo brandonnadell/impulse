@@ -1,11 +1,16 @@
 import React, { useState } from 'react';
 import SearchBar from 'material-ui-search-bar';
 import { isURL } from 'validator';
-
+import styled from 'styled-components';
 
 const HTTP = "https://";
 const WWW = "www.";
 const SEARCH_URL = "http://www.google.com/search?q=";
+
+const SearchBarWrapper = styled.div`
+    margin: auto;
+    max-width: 800px;
+`;
 
 const searchHandler = (query) => {
     let options = {"require_protocol": true};
@@ -28,16 +33,18 @@ const searchHandler = (query) => {
 const Search = (props) => {
     const [value, setValue] = useState("");
     return (
-        <SearchBar
-            value={value}
-            placeholder={"Search"}
-            onChange={(newValue) => setValue(newValue)}
-            onRequestSearch={() => searchHandler(value)}
-            style={{
-                margin: '0 auto',
-                maxWidth: 800
-              }}
-        />
+        <SearchBarWrapper>
+            <SearchBar
+                value={value}
+                placeholder={"Search"}
+                onChange={(newValue) => setValue(newValue)}
+                onRequestSearch={() => searchHandler(value)}
+                style={{
+                    margin: '0 auto',
+                    maxWidth: 800
+                }}
+            />
+        </SearchBarWrapper>
 
     );
 }

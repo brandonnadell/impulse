@@ -1,4 +1,4 @@
-import React, { useState, useLayoutEffect } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import Time from './Time';
 import Weather from './Weather';

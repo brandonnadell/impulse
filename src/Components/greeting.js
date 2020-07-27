@@ -17,10 +17,11 @@ const GreetingContainer = styled.div`
 
 const TextWrapper = styled.div`
     margin: 6px 0 7px;
+    text-shadow: 0 1px 5px rgba(0,0,0,.1);
 `;
 
 const Greeting = (props) => {
-    const [displayName, setDisplayName] = useState(null);
+    const [displayName, setDisplayName] = useState("");
     // const [width, setWidth] = useState(DEFAULT_PLACEHOLDER.length + "ch")
     
     useLayoutEffect(() => {
@@ -71,8 +72,7 @@ const Greeting = (props) => {
                         textAlign: 'center'
                     }
                 }}
-                input
-                defaultValue={DEFAULT_PLACEHOLDER}
+                
                 placeholder={DEFAULT_PLACEHOLDER}
                 value={displayName}
                 onChange={handleChange}
