@@ -7,15 +7,11 @@ const ClockWrapper = styled.div`
     float: right;
     padding: 8px 12px;
 `;
-const TIME_OPTIONS = {'hour12':true,'hour':'2-digit','minute':'2-digit'};
+const TIME_OPTIONS = {'hour12':true, hour:'numeric', minute:'numeric'};
 const Time =()=>{
 
     const getCurrentTime = () => {
-        let tempTime =  new Date().toLocaleTimeString([], TIME_OPTIONS);
-        if(tempTime[0] == "0"){
-            tempTime = tempTime.substr(1)
-        }
-        return tempTime
+        return new Date().toLocaleTimeString([], TIME_OPTIONS);
     }
     const [time, setTime] = useState(getCurrentTime());
 
