@@ -11,6 +11,8 @@ const DEFAULT_PLACEHOLDER = "friend";
 const GreetingContainer = styled.div`
     text-align: center;
     margin: auto;
+    max-width: 800px;
+    padding: 10px;
 `;
 
 const TextWrapper = styled.div`

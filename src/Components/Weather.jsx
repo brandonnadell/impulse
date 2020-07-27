@@ -6,8 +6,6 @@ import { Typography, Box } from "@material-ui/core";
 import styled from 'styled-components';
 
 const WeatherWrapper = styled.div`
-    float: right;
-    display: block;
     padding: 0px 12px;
     text-align: right;
 `;
@@ -31,7 +29,7 @@ const Weather = (props) =>{
         const skyCover = weather.weather[0].main;
         const temp = Math.round(weather.main.temp);
         return (  
-            <WeatherWrapper display='inline'>
+            <WeatherWrapper>
                 <Typography variant='subtitle1'>
                     <Box fontWeight='fontWeightMedium'>
                         {city}

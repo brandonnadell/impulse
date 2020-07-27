@@ -4,7 +4,7 @@ import { Typography, Box } from '@material-ui/core';
 import styled from 'styled-components';
 
 const ClockWrapper = styled.div`
-    float: right;
+
     padding: 8px 12px;
 `;
 const TIME_OPTIONS = {'hour12':true, hour:'numeric', minute:'numeric'};
@@ -22,7 +22,7 @@ const Time =()=>{
     });
     return (
     <ClockWrapper>
-        <Typography variant='h5' display='inline'>
+        <Typography variant='h5'>
             <Box fontWeight='fontWeightMedium' display='inline'>
                 {time}
             </Box>
