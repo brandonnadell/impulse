@@ -1,15 +1,12 @@
 import React, { useState, useEffect } from "react";
 import getWeather from '../util/getWeather';
-import Card from '@material-ui/core/Card';
-import CardContent from '@material-ui/core/CardContent';
 import { Typography, Box } from "@material-ui/core";
 import styled from 'styled-components';
 
 const WeatherWrapper = styled.div`
-    float: right;
-    display: block;
     padding: 0px 12px;
     text-align: right;
+    text-shadow: 0 1px 5px rgba(0,0,0,.1);
 `;
 
 
@@ -31,39 +28,27 @@ const Weather = (props) =>{
         const skyCover = weather.weather[0].main;
         const temp = Math.round(weather.main.temp);
         return (  
-            <WeatherWrapper display='inline'>
-                <Typography variant='subtitle1'>
-                    <Box fontWeight='fontWeightMedium'>
-                        {city}
-                    </Box>
-                    <Box fontWeight='fontWeightLight'>
-                        {skyCover}
-                    </Box>
-                    <Box fontWeight='fontWeightLight'>
+            <WeatherWrapper>
+                <Typography variant='h3'>
+                <Box fontWeight='fontWeightMedium'>
                         {temp}&#176;
                     </Box>
                 </Typography>
+                <Typography variant='h6'>
+                    <Box  fontWeight='fontWeightBold'>
+                        {city}
+                    </Box>
+                    <Box fontWeight='fontWeightMedium'>
+                        {skyCover}
+                    </Box>
+                </Typography>
+                
             </WeatherWrapper>
         );
     }
     return (
         <React.Fragment></React.Fragment>
     );
-    // return (
-    // <Card>
-    //     <CardContent>
-    //     {weather ?
-    //     <>
-    //     <div><p>Weather in {weather.name}:</p>
-    //     <p>{weather.weather[0].main}, temp: {weather.main.temp}</p></div>
-    //     </>
-    //     :
-    //     <div>Finding weather...</div>
-    //     }
-    //     </CardContent>
-
-    // </Card>
-    // )
 };
 
 export default Weather;

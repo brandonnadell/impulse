@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import Clock from 'react-digital-clock';
 import { Typography, Box } from '@material-ui/core';
 import styled from 'styled-components';
 
 const ClockWrapper = styled.div`
-    float: right;
+    text-shadow: 0 1px 5px rgba(0,0,0,.1);
     padding: 8px 12px;
 `;
 const TIME_OPTIONS = {'hour12':true, hour:'numeric', minute:'numeric'};
@@ -22,7 +21,7 @@ const Time =()=>{
     });
     return (
     <ClockWrapper>
-        <Typography variant='h5' display='inline'>
+        <Typography variant='h3'>
             <Box fontWeight='fontWeightMedium' display='inline'>
                 {time}
             </Box>

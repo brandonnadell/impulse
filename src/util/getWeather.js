@@ -3,7 +3,7 @@
 const getWeather = async (pos) => {
   const latitude = pos.coords.latitude;
   const longitude = pos.coords.longitude;
-  console.log(process.env.REACT_APP_WEATHER_KEY);
+  console.log("API Key: " + process.env.REACT_APP_WEATHER_KEY);
   const api_call = await
   fetch(`//api.openweathermap.org/data/2.5/weather?
 lat=${latitude}&lon=${longitude}&appid=${process.env.REACT_APP_WEATHER_KEY}&units=imperial`);
