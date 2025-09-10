@@ -15,7 +15,7 @@
     "react-digital-clock": "^0.1.2",
     "react-dom": "^16.13.1",
     "react-jss": "^10.3.0",
-    "react-scripts": "3.4.1",
+    "react-scripts": "5.0.1",
     "styled-components": "^5.1.1",
     "validator": "^13.1.1",
     "source-map-loader": "^1.0.0"
